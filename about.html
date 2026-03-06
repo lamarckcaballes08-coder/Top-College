@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>About | TopPH Colleges</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">TopPH Colleges</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="colleges.html">Colleges</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+
+<section class="about-container">
+
+<h1>About TopPH Colleges</h1>
+
+<p>
+TopPH Colleges is an informational website designed to highlight
+some of the most prestigious universities in the Philippines.
+</p>
+
+<div class="about-grid">
+
+<div class="about-card">
+
+<h3>Purpose</h3>
+
+<p>
+The goal of this website is to provide students with a quick overview
+of leading colleges in the Philippines and help them explore
+their academic opportunities.
+</p>
+
+</div>
+
+<div class="about-card">
+
+<h3>Explore Universities</h3>
+
+<p>
+Users can browse universities, read brief descriptions,
+rate colleges, and access the official websites of each institution.
+</p>
+
+</div>
+
+<div class="about-card">
+
+<h3>Educational Project</h3>
+
+<p>
+This website was created as a web development project to demonstrate
+modern UI design and interactive web features.
+</p>
+
+</div>
+
+</div>
+
+<section class="comments-section">
+    <h2>Community Comments</h2>
+
+    <div class="comment-form">
+        <label for="username">Username:</label>
+        <select id="username">
+            <option value="Guest">Guest</option>
+            <option value="Anonymous">Anonymous</option>
+        </select>
+
+        <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
+        <button id="postCommentBtn">Post Comment</button>
+    </div>
+
+    <ul id="commentList"></ul>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const postBtn = document.getElementById("postCommentBtn");
+    const commentInput = document.getElementById("commentInput");
+    const usernameSelect = document.getElementById("username");
+    const commentList = document.getElementById("commentList");
+
+    // Load comments from localStorage on page load
+    let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+    function renderComments() {
+        commentList.innerHTML = "";
+        comments.forEach(c => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${c.username}</strong> <span class="timestamp">${c.time}</span>: ${c.text}`;
+            commentList.appendChild(li);
+        });
+    }
+
+    // Initial render
+    renderComments();
+
+    // Add new comment
+    postBtn.addEventListener("click", function() {
+        const username = usernameSelect.value;
+        const text = commentInput.value.trim();
+        if(text === "") return;
+
+        const timestamp = new Date().toLocaleString();
+        comments.push({ username, text, time: timestamp });
+
+        // Save to localStorage
+        localStorage.setItem("comments", JSON.stringify(comments));
+
+        // Render updated list
+        renderComments();
+
+        // Clear input
+        commentInput.value = "";
+        commentInput.focus();
+    });
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="script.js" defer></script>
+<meta charset="UTF-8">
+<title>Top 10 Colleges in the Philippines</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">TopPH Colleges</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="colleges.html">Colleges</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+
+<section class="slideshow">
+    <div class="slides-container">
+        <div class="slide active">
+            <img src="images/UP.jpg" alt="University 1">
+            <div class="slide-caption">University of the Philippines Diliman</div>
+        </div>
+        <div class="slide">
+            <img src="images/UST.jpg" alt="University 2">
+            <div class="slide-caption">University of Santo Tomas</div>
+        </div>
+        <div class="slide">
+            <img src="images/Ateneo.jpg" alt="University 3">
+            <div class="slide-caption">Ateneo De Manila</div>
+        </div>
+        <div class="slide">
+            <img src="images/Carlos.jpg" alt="University 3">
+            <div class="slide-caption">University of San Carlos</div>
+        </div>
+    </div>
+    <div class="slideshow-controls">
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+    </div>
+</section>
+
+<div class="hero-content">
+<div class="center-text">
+<h1>Top 10 Colleges in the Philippines</h1>
+
+<p>Explore the country's most prestigious universities known for academic excellence, research, and innovation.</p>
+
+<a href="colleges.html" class="btn">Explore Colleges</a>
+
+</div>
+</div>
+
+</section>
+
+
+<section class="preview">
+
+<h2>Featured Universities</h2>
+
+<div class="preview-grid">
+
+<div class="preview-card">
+<h3>University of the Philippines</h3>
+<p>National university of the Philippines.</p>
+</div>
+
+<div class="preview-card">
+<h3>Ateneo de Manila</h3>
+<p>Leading institution for leadership and liberal arts.</p>
+</div>
+
+<div class="preview-card">
+<h3>De La Salle University</h3>
+<p>Top university for business and engineering.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Top Colleges PH 2nd version By Lamarck Cabs</p>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".slide");
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  next.addEventListener("click", nextSlide);
+  prev.addEventListener("click", prevSlide);
+
+  showSlide(index);
+  setInterval(nextSlide, 4000);
+});
+</script>
+
+</body>
+</html>
